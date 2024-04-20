@@ -22,7 +22,7 @@ def on_publish(client, userdata, mid, reason_code, properties):
 
 def on_connect(client, userdata, flags, reason_code, properties):
     logger.info(f"Connected with result code: {str(reason_code)}")
-    client.subscribe("mTLS/start")
+    client.subscribe("mTLS/end")
 
 
 def on_message(client, userdata, msg):
@@ -55,13 +55,13 @@ def lsl_signal_acquisition(client):
 
     while True:
         try:
-            sample, _ = inlet.pull_sample()
+            sample, timestamp = inlet.pull_sample()
         except Exception:
             logger.exception("No more samples to acquire.")
             break
 
         start_at = datetime.now().isoformat()
-        message = json.dumps({"sample": sample, "start_at": start_at})
+        message = json.dumps({"start_at": start_at})
         publish_message(client, message)
 
 
