@@ -7,5 +7,5 @@ class InfluxDB:
         self.write_api = client.write_api()
 
     def collect(self, elapsed_time):
-        point = Point("experiment").tag("service", "without_mTLS").field("elapsed_time", elapsed_time)
+        point = Point("experiment").tag("service", "with_mTLS").field("elapsed_time", elapsed_time)
         self.write_api.write(bucket="metrics", record=point)
