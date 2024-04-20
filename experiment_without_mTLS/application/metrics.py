@@ -3,7 +3,7 @@ from influxdb_client import InfluxDBClient, Point
 
 class InfluxDB:
     def __init__(self):
-        client = InfluxDBClient(url="localhost:8086", token="SUPERTOKEN!", org="isd")
+        client = InfluxDBClient(url="labs.local:8086", token="SUPERTOKEN!", org="isd", retries=True)
         self.write_api = client.write_api()
 
     def collect(self, elapsed_time):
