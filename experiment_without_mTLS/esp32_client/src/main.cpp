@@ -2,8 +2,8 @@
 #include <MQTTClient.h>
 #include <WiFi.h>
 
-const char ssid[] = "";
-const char pass[] = "";
+const char ssid[] = "<rede-wifi>";
+const char pass[] = "<senha>";
 
 WiFiClient espClient;
 MQTTClient client;
@@ -38,7 +38,7 @@ void setup()
   // Connect to the mqtt broker
   while (!client.connect("myclient"))
   {
-    Serial.print(",");
+    Serial.print("m");
     delay(1000);
   }
   Serial.println("Connected!");
@@ -55,7 +55,7 @@ void loop()
   {
     while (!client.connect("myclient"))
     {
-      Serial.print(".");
+      Serial.print("r");
       delay(1000);
     }
     Serial.println("Reconnected to MQTT Broker!");
