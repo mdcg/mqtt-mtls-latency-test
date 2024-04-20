@@ -76,7 +76,7 @@ if __name__ == "__main__":
     client.on_connect = on_connect
     client.on_message = on_message
     client.user_data_set(UNACKED_PUBLISH)
-    client.connect("labs.local", 1883)
+    client.connect("labs.local", 8883)
 
     threading.Thread(target=client.loop_forever).start()
 
