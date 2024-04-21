@@ -17,8 +17,6 @@ def on_publish(client, userdata, mid, reason_code, properties):
     with suppress(KeyError):
         userdata.remove(mid)
 
-    logger.info("Message sent successfully.")
-
 
 def on_connect(client, userdata, flags, reason_code, properties):
     logger.info(f"Connected with result code: {str(reason_code)}")
